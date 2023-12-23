@@ -1,9 +1,11 @@
 import torch
 from cluster import Cluster
+from functions import k_means_cluster
 
 torch.manual_seed(2004)
 K = 3 # Number of clusters
-points = set([(1, 1), (4, 4), (6, 4), (2, 5), (4, 5), (2, 6), (4, 7)]) # Points from video "UL 3 - Example K-Means Clustering"
+points = [(1, 1), (4, 4), (6, 4), (2, 5), (4, 5), (2, 6), (4, 7), (1, 8)] # Points from video "UL 3 - Example K-Means Clustering"
+points = set([torch.tensor(point) for point in points])
 clusters = [Cluster(cluster_number = k) for k in range(K)]
 random_initialisation = False
 
@@ -29,3 +31,6 @@ else:
         cluster.set_cluster_center()
         print(cluster.points)
         print(cluster.center, "\n")
+
+# Perform K-Means clustering algorithm
+k_means_cluster(clusters = clusters, points = points.copy())

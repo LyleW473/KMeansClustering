@@ -19,5 +19,4 @@ class Cluster:
 
     def set_cluster_center(self):
         average_xy = self.points.mean(dim = 0, dtype = torch.float32)
-        print(average_xy[0], average_xy[1])
         self.center = torch.tensor([average_xy[0], average_xy[1]])
