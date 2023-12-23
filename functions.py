@@ -38,7 +38,9 @@ def k_means_cluster(clusters, points):
 
         # Update list of cluster centers as these will used to compare between cluster centers from this iteration and the next iteration
         cluster_centers = [cluster.center for cluster in clusters]
-        iteration_i += 1
+
+        if not complete:
+            iteration_i += 1
     
     print("------------------------------------------------------------------------------")
     print("Final results:")
